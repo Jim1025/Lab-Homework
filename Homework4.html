@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		.border {
+			border: 2px solid dimgray;
+			border-radius: 5px;
+			background-color: lightgray;
+		}
+		.txt {
+			width: 450px;
+			margin: 0 auto;
+		}
+		.c1 {
+			width: 400px;
+			height: 30px;
+			font-size: 20px;
+		}
+		.c2 {
+			width: 200px;
+			height: 50px;
+			font-size: 20px;
+			border-radius: 5px;
+			background-color: #c25215;
+		}
+		.c3 {
+			width: 400px;
+			
+			margin-bottom: 10px;
+		}
+		.c4 {
+			background-color: #ebebeb;
+			font-size: 20px;
+		}
+		.c5 {
+			background-color: #676b68;
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="txt">
+		<div class="border">
+	<h1>Guessing Game</h1>
+		<form action="#">
+			<p>Your Guess(1 ~ 100)</p>
+			<input type="text" id="number" class="c1">
+			<p><input type="button" name="play" value="START" onclick="check()" class="c2"></p>	
+		</form>
+			<div class="c4">Result</div>
+			<div id="result" class="c3">
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript">
+	var answer = Math.floor((Math.random() * 100) + 1);
+	var max = 100, min = 1;
+	var i = 1;
+
+	function check() {
+		var number = document.getElementById('number').value;
+		if (number == answer) {
+			alert('You got it!');
+		} else if (number < answer) {
+			min = number;
+			i++;
+			output();
+		} else {
+			max = number;
+			i++;
+			output();
+		}
+	}
+
+	function output() {
+		var newLine = document.createElement('div');
+		var text = document.createTextNode(min + '~' + max);
+		newLine.appendChild(text);
+		if (i % 2 == 1) {
+			newLine.setAttribute('class', 'c4');
+		} else {
+			newLine.setAttribute('class', 'c5');
+		}
+		document.getElementById('result').appendChild(newLine);
+	}
+</script>
+</html>

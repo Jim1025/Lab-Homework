@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+
+	<style type="text/css">
+		.border {
+			border: 2px solid dimgray;
+			border-radius: 5px;
+			background-color: lightgray;
+		}
+		.txt {
+			width: 500px;
+			text-align: center;
+			margin: 0 auto;
+			margin-top: 50px;
+		}
+		.c1 {
+			width: 480px;
+			height: 30px;
+			font-size: 20px;
+		}
+		.c2{
+			background-color: #c25215;
+			width: 480px;
+			height: 30px;
+			font-size: 20px;
+		}
+	</style>
+</head>
+<script type="text/javascript">
+		function calculate() {
+			var result;
+			var num1 = document.getElementById("number1").value;
+			var num2 = document.getElementById("number2").value;
+			if (document.getElementById('Operate').value == "plus") {
+				result = parseInt(num1) + parseInt(num2);
+			} else if (document.getElementById('Operate').value == "minus") {
+				result = parseInt(num1) - parseInt(num2);
+			} else if (document.getElementById('Operate').value == "times") {
+				result = parseInt(num1) * parseInt(num2);
+			} else {
+				result = parseInt(num1) / parseInt(num2);
+			}
+			document.getElementById("answer").innerHTML = "Result = " +　result; 
+		}	
+			
+		function setButton(val) {	
+			var button = document.getElementById("OperateButton");
+			if (val == 'plus') {	
+				button.value = "Add";
+			} else if (val == 'minus') {
+				button.value = "Minus";
+			} else if (val == 'times') {	
+				button.value = "Times";
+			} else if (val == 'divide') {
+				button.value = "Divides";
+			}
+		}				
+</script>
+<body>
+<div class="txt">
+	<div class="border">	
+		<h1>JS Calculator</h1>
+		<form action="#">
+		<p>Number1</p>
+			<input type="text" id="number1" class="c1">
+		<p>Number2</p>
+			<input type="text" id="number2" class="c1">
+		<p>Operate Way?</p>
+			<select id="Operate" onchange="setButton(this.value)" class="c1">
+				<option id="plus" value="plus">+</option>
+				<option id="minus" value="minus">-</option>
+				<option id="times" value="times">*</option>
+				<option id="divide" value="divide">/</option>
+			</select>
+				<input type="button" id="OperateButton" value="Add" onclick="calculate()" class="c2">
+			</form>
+			<p id="answer"></p>		
+		</div>
+	</div>
+</div>
+</body>
+</html>	
